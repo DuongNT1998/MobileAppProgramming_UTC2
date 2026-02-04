@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1037918481693",
+    "project_id": "productmanagement-f0296",
+    "storage_bucket": "productmanagement-f0296.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037918481693:android:c9951feac91699de9305f4",
+        "android_client_info": {
+          "package_name": "com.example.cloudy_firebase_storage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf41HutQ5LcCXYASkpI2sbU6UHEaIfsA8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
