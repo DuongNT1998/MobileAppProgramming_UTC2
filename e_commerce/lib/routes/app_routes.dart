@@ -8,7 +8,7 @@ import '../screens/auth/register_screen.dart';
 import '../screens/auth/verify_email_screen.dart';
 import '../screens/auth/register_success_screen.dart';
 import '../screens/home/main_navigation_screen.dart';
-import '../screens/profile/profile_screen.dart';
+
 import '../screens/profile/update_account_screen.dart';
 import '../screens/profile/change_name_screen.dart';
 import '../screens/profile/change_gender_screen.dart';
@@ -17,6 +17,10 @@ import '../screens/profile/change_password_screen.dart';
 import '../screens/profile/change_email_screen.dart';
 import '../screens/profile/change_phonenumber_screen.dart';
 import '../screens/profile/change_dateofbirth_screen.dart';
+
+import '../screens/cart/cart_overview_screen.dart';
+import '../screens/order/order_overview_screen.dart';
+import '../screens/order/my_order_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -29,6 +33,7 @@ class AppRoutes {
   static const String registerSuccess = '/register-success';
   static const String home = '/home';
   static const String profile = '/profile';
+  static const String publisher = '/publisher';
   static const String updateAccount = '/update-account';
 
   static const String changeName = '/change-name';
@@ -38,6 +43,9 @@ class AppRoutes {
   static const String changePhoneNumber = '/change-phonenumber';
   static const String changeGender = '/change-gender';
   static const String changeDateofBirth = '/change-datebirth';
+  static const String cartOverview = '/cart-overview';
+  static const String orderOverview = '/order-overview';
+  static const String myOrderview = '/my-order';
 
   static Map<String, WidgetBuilder> routes = {
     splash: (context) => const SplashScreen(),
@@ -54,6 +62,9 @@ class AppRoutes {
     changePhoneNumber: (context) => const ChangePhoneNumberScreen(),
     changeGender: (context) => const ChangeGenderScreen(),
     changeDateofBirth: (context) => const ChangeDateOfBirthScreen(),
+    cartOverview: (context) => const CartOverviewScreen(),
+    orderOverview: (context) => const OrderOverviewScreen(),
+    myOrderview: (context) => const MyOrderScreen(),
 
     verifyEmail: (context) {
       final String email = ModalRoute.of(context)!.settings.arguments as String;

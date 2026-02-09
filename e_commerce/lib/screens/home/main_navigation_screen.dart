@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import '../profile/profile_screen.dart';
+import '../publisher/publisher_screen.dart';
+import '../wishlist/wishlist_screen.dart';
 
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
@@ -14,8 +16,8 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> screens = [
     const HomeScreen(),
-    const Center(child: Text('Publishers')),
-    const Center(child: Text('Wishlist')),
+    const PublisherScreen(),
+    const WishlistScreen(),
     const ProfileScreen(),
   ];
 

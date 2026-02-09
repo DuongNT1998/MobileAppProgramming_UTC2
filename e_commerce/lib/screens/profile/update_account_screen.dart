@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../common/styles/app_colors.dart';
-import '../../common/styles/app_colors.dart';
+
 import '../../common/styles/app_text_styles.dart';
 import '../../routes/app_routes.dart';
 

@@ -2,6 +2,28 @@ import 'package:flutter/material.dart';
 import '../../common/widgets/home_banner_slider.dart';
 import '../../common/widgets/category_item.dart';
 import '../../common/widgets/product_card.dart';
+import '../../data/models/product_model.dart';
+import '../category/sub_category_screen.dart';
+import '../cart/cart_overview_screen.dart';
+import '../product/popular_product_screen.dart';
+
+final List<ProductModel> mockProducts = List.generate(
+  6,
+  (index) => ProductModel(
+    id: 'p$index',
+    name: 'Book Name $index',
+    publisher: 'NXB ABC',
+    price: 20 + index.toDouble(),
+    rating: 4.8,
+    reviewCount: 1234,
+    images: const [
+      'https://via.placeholder.com/400',
+      'https://via.placeholder.com/401',
+      'https://via.placeholder.com/402',
+      'https://via.placeholder.com/403',
+    ],
+  ),
+);
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,12 +74,20 @@ class HomeScreen extends StatelessWidget {
                       Stack(
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const CartOverviewScreen(),
+                                ),
+                              );
+                            },
                             icon: const Icon(
                               Icons.shopping_cart,
                               color: Colors.white,
                             ),
                           ),
+
                           Positioned(
                             right: 6,
                             top: 6,
@@ -112,12 +142,77 @@ class HomeScreen extends StatelessWidget {
                     height: 80,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
-                      children: const [
-                        CategoryItem(icon: Icons.book, title: 'Novel'),
-                        CategoryItem(icon: Icons.menu_book, title: 'Education'),
-                        CategoryItem(icon: Icons.auto_stories, title: 'Comics'),
-                        CategoryItem(icon: Icons.child_care, title: 'Kids'),
-                        CategoryItem(icon: Icons.house, title: 'House'),
+                      children: [
+                        CategoryItem(
+                          icon: Icons.book,
+                          title: 'Novel',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const SubCategoryScreen(
+                                  categoryName: 'Novel',
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        CategoryItem(
+                          icon: Icons.menu_book,
+                          title: 'Education',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const SubCategoryScreen(
+                                  categoryName: 'Education',
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        CategoryItem(
+                          icon: Icons.auto_stories,
+                          title: 'Comics',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const SubCategoryScreen(
+                                  categoryName: 'Comics',
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        CategoryItem(
+                          icon: Icons.auto_stories,
+                          title: 'Business',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const SubCategoryScreen(
+                                  categoryName: 'Business',
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                        CategoryItem(
+                          icon: Icons.auto_stories,
+                          title: 'Health',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const SubCategoryScreen(
+                                  categoryName: 'Health',
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -138,36 +233,45 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   Row(
-                    children: const [
-                      Text(
+                    children: [
+                      const Text(
                         'Popular Product',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Spacer(),
-                      Text('View all', style: TextStyle(color: Colors.blue)),
+                      const Spacer(),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const PopularProductScreen(),
+                            ),
+                          );
+                        },
+                        child: const Text('View all'),
+                      ),
                     ],
                   ),
 
                   const SizedBox(height: 16),
 
-                  GridView.count(
-                    crossAxisCount: 2,
+                  GridView.builder(
+                    itemCount: mockProducts.length,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    crossAxisSpacing: 12,
-                    mainAxisSpacing: 12,
-                    childAspectRatio: 0.65,
-                    children: const [
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                      ProductCard(),
-                    ],
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                          childAspectRatio: 0.65,
+                        ),
+                    itemBuilder: (context, index) {
+                      return ProductCard(product: mockProducts[index]);
+                    },
                   ),
                 ],
               ),

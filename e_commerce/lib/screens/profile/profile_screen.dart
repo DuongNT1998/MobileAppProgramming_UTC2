@@ -4,6 +4,8 @@ import '../../common/styles/app_text_styles.dart';
 import '../../common/widgets/profile_menu_item.dart';
 import '../../routes/app_routes.dart';
 
+import '../order/my_order_screen.dart';
+
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -28,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildAccountSetting(),
+                    _buildAccountSetting(context),
                     const SizedBox(height: 24),
                     _buildAppSettingLabel(),
                   ],
@@ -86,7 +88,7 @@ class ProfileScreen extends StatelessWidget {
   }
 
   /// ===== Account Setting =====
-  Widget _buildAccountSetting() {
+  Widget _buildAccountSetting(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -104,14 +106,21 @@ class ProfileScreen extends StatelessWidget {
           icon: Icons.shopping_cart,
           title: 'My Cart',
           subtitle: 'View items in your cart',
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, AppRoutes.cartOverview);
+          },
         ),
 
         ProfileMenuItem(
           icon: Icons.receipt_long,
           title: 'My Order',
           subtitle: 'Track your orders',
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const MyOrderScreen()),
+            );
+          },
         ),
 
         ProfileMenuItem(

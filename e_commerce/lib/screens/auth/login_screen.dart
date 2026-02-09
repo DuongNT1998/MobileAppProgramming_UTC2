@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../common/widgets/custom_text_field.dart';
+
 import '../../common/widgets/primary_button.dart';
 import '../../common/widgets/social_login_button.dart';
 import '../../routes/app_routes.dart';
